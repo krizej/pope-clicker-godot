@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://InfoPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/pope.png" type="Texture" id=2]
@@ -12,15 +12,12 @@
 [ext_resource path="res://Upgrades.gd" type="Script" id=10]
 [ext_resource path="res://assets/fonts/comic_pricetag.tres" type="DynamicFont" id=11]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 180, 205 )
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 use_filter = true
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 20
 use_filter = true
 font_data = ExtResource( 7 )
@@ -43,7 +40,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="pope" type="RigidBody2D" parent="."]
-position = Vector2( 0, 640 )
+position = Vector2( 0, 230 )
 input_pickable = true
 mode = 1
 script = ExtResource( 5 )
@@ -55,13 +52,29 @@ __meta__ = {
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( 0, -917 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pope"]
-position = Vector2( 180, -205 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pope"]
+scale = Vector2( 0.45, 0.45 )
+polygon = PoolVector2Array( 430, 1.1, 430, 2.3, 452, 6.3, 452, 7.6, 470, 13.6, 470, 14.7, 505, 33.8, 505, 35.1, 520, 48.1, 520, 50.4, 538.1, 78, 538.9, 78, 550.9, 91, 553.6, 91, 564, 97.9, 564, 99.3, 572, 109.3, 572, 116.1, 571.3, 121, 578, 148.8, 578, 164.1, 575, 202.2, 575, 211, 577.3, 229, 575.5, 229, 572.5, 240, 571, 240, 565, 247.7, 565, 255.3, 544.5, 329, 543.4, 329, 539.4, 341, 537.9, 341, 533, 346.7, 533, 363, 533.6, 363, 538.5, 366, 550.1, 366, 563, 367.2, 563, 368.5, 615, 383.5, 615, 384.7, 672, 411.7, 672, 413, 688.7, 426, 690.5, 426, 705, 433.8, 705, 435.1, 725.9, 458, 727.7, 458, 739, 467, 739, 469.2, 760, 492.2, 760, 494.5, 800, 562.1, 800, 917, 0, 917, 0, 500, 12.1, 487, 14.3, 487, 47.3, 463, 49.5, 463, 62, 456.8, 62, 456.1, 75.2, 444, 77.8, 444, 92, 442.2, 101.2, 434, 104.6, 434, 135, 419.8, 135, 418.9, 150.4, 409, 153.7, 409, 171.7, 403, 180.7, 403, 186, 402.2, 194, 397.8, 194, 396.4, 213, 366.3, 213, 364.6, 220.6, 345, 222.1, 345, 232, 334.1, 232, 327, 231.4, 327, 229.3, 317, 224.2, 317, 210, 318.2, 210, 316, 198, 307, 198, 301.5, 192, 291.6, 192, 281, 182, 246.3, 182, 238, 178, 211.1, 178, 209.8, 180.4, 199, 182.1, 199, 196.1, 182, 211.7, 182, 216, 181.3, 216, 166.9, 220.2, 129, 221.6, 129, 230.6, 105, 231.9, 105, 243.9, 87, 245.1, 87, 257.1, 74, 259.5, 74, 268, 68, 268, 66.4, 278.9, 50, 281.1, 50, 295.2, 37, 297.4, 37, 331.4, 16, 334.7, 16, 366, 6.5, 374.4, 0, 391, 0, 410.5, 0 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="pope"]
+scale = Vector2( 0.45, 0.45 )
+polygon = PoolVector2Array( 185.4, 240.5, 184.3, 243, 182.8, 243, 180.5, 245.4, 178, 244.3, 178, 243.1, 175, 241.1, 175, 237.8, 177, 236.8, 177, 235.7, 179.5, 234.6 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="pope"]
+scale = Vector2( 0.45, 0.45 )
+polygon = PoolVector2Array( 179.4, 245.5, 178.3, 248, 170, 248, 170, 243.8, 172, 242.8, 172, 241.7, 174.5, 240.6 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="pope"]
+scale = Vector2( 0.45, 0.45 )
+polygon = PoolVector2Array( 96.4, 440.5, 95.3, 443, 87, 443, 87, 438.8, 89, 437.8, 89, 436.7, 91.5, 435.6 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="pope"]
+scale = Vector2( 0.45, 0.45 )
+polygon = PoolVector2Array( 743.4, 464.5, 742.3, 467, 734, 467, 734, 462.8, 736, 461.8, 736, 460.7, 738.5, 459.6 )
 
 [node name="InfoPanel" type="Panel" parent="."]
+light_mask = -2147483647
 margin_right = 720.0
 margin_bottom = 90.0
 script = ExtResource( 1 )
@@ -75,7 +88,7 @@ margin_right = 360.0
 margin_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Points: 0[/center]
 "
@@ -92,7 +105,7 @@ margin_right = 720.0
 margin_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Points: 0[/center]
 "
@@ -109,7 +122,7 @@ margin_right = 268.0
 margin_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
 bbcode_text = "[center]Points/Second: 0[/center]
 "
@@ -158,6 +171,7 @@ margin_right = 400.0
 margin_bottom = 40.0
 script = ExtResource( 10 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -171,7 +185,6 @@ enabled_focus_mode = 0
 icon = ExtResource( 8 )
 expand_icon = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -211,7 +224,6 @@ enabled_focus_mode = 0
 icon = ExtResource( 9 )
 expand_icon = true
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

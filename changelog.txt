@@ -1,0 +1,7 @@
+0.1
++ Added clicking
++ Added 2 upgrades: Creampie and Statue
+
+0.2
++ Overhauled the code for Upgrades (dzieki jacek)
++ Added particles that spawn when you click the Pope
