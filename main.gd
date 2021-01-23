@@ -1,7 +1,8 @@
 extends Node2D
 
 var points = 0
-var points_per_second = 0
+var pointsPerSecond = 0
+var pointsPerClick = 1
 
 
 class Upgrade:
@@ -16,3 +17,18 @@ class Upgrade:
 		price = p
 		bonus = b
 		
+class Achievement:
+	var achievementName
+	var description
+	var prerequisite
+	var condition
+	var achieved
+	
+	func create(an, d, c):
+		achievementName = an
+		description = d
+		condition = c
+		
+	func setPrerequisite(p):
+		prerequisite = p
+	

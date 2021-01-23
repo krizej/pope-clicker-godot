@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://InfoPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/pope.png" type="Texture" id=2]
@@ -11,13 +11,20 @@
 [ext_resource path="res://assets/textures/upgrades/sculpture.png" type="Texture" id=9]
 [ext_resource path="res://Upgrades.gd" type="Script" id=10]
 [ext_resource path="res://assets/fonts/comic_pricetag.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/music/zawadiaka.ogg" type="AudioStream" id=12]
+[ext_resource path="res://MusicPlayer.gd" type="Script" id=13]
+[ext_resource path="res://assets/textures/upgrades/spinach.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/upgrades/mary.png" type="Texture" id=15]
+[ext_resource path="res://AchievementHandler.gd" type="Script" id=16]
+[ext_resource path="res://popeDance.gd" type="Script" id=17]
+[ext_resource path="res://assets/textures/popegif.png" type="Texture" id=18]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 use_filter = true
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 use_filter = true
 font_data = ExtResource( 7 )
@@ -52,6 +59,22 @@ __meta__ = {
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 2 )
 centered = false
+
+[node name="dancingPope" type="Sprite" parent="pope"]
+visible = false
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 18 )
+centered = false
+hframes = 7
+script = ExtResource( 17 )
+
+[node name="AnimationTimer" type="Timer" parent="pope/dancingPope"]
+wait_time = 0.04
+autostart = true
+
+[node name="SpecialModeTimer" type="Timer" parent="pope/dancingPope"]
+wait_time = 10.0
+one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pope"]
 scale = Vector2( 0.45, 0.45 )
@@ -88,7 +111,7 @@ margin_right = 360.0
 margin_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Points: 0[/center]
 "
@@ -105,7 +128,7 @@ margin_right = 720.0
 margin_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Points: 0[/center]
 "
@@ -122,7 +145,7 @@ margin_right = 268.0
 margin_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Points/Second: 0[/center]
 "
@@ -253,11 +276,144 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Mary" type="Button" parent="Upgrades"]
+margin_left = 53.0
+margin_top = 253.0
+margin_right = 153.0
+margin_bottom = 353.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 15 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmountInfo" type="RichTextLabel" parent="Upgrades/Mary"]
+margin_left = 2.0
+margin_top = -1.0
+margin_right = 92.0
+margin_bottom = 26.0
+custom_fonts/normal_font = ExtResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[right]0"
+text = "0"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PriceInfo" type="RichTextLabel" parent="Upgrades/Mary"]
+margin_left = 6.757
+margin_top = 69.154
+margin_right = 96.757
+margin_bottom = 96.154
+custom_fonts/normal_font = ExtResource( 11 )
+text = "11"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spinach" type="Button" parent="Upgrades"]
+margin_left = 206.0
+margin_top = 253.0
+margin_right = 306.0
+margin_bottom = 353.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 14 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmountInfo" type="RichTextLabel" parent="Upgrades/Spinach"]
+margin_left = 2.0
+margin_top = -1.0
+margin_right = 92.0
+margin_bottom = 26.0
+custom_fonts/normal_font = ExtResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[right]0"
+text = "0"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PriceInfo" type="RichTextLabel" parent="Upgrades/Spinach"]
+margin_left = 6.757
+margin_top = 69.154
+margin_right = 96.757
+margin_bottom = 96.154
+custom_fonts/normal_font = ExtResource( 11 )
+text = "14"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AchievementHandler" type="Control" parent="."]
+margin_left = 55.4365
+margin_top = 122.842
+margin_right = 95.4365
+margin_bottom = 162.842
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AchievementPanel" type="Panel" parent="AchievementHandler"]
+visible = false
+margin_left = 4.0
+margin_top = -3.0
+margin_right = 241.0
+margin_bottom = 58.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="getText" type="RichTextLabel" parent="AchievementHandler/AchievementPanel"]
+margin_left = 27.7183
+margin_top = 1.88988
+margin_right = 196.718
+margin_bottom = 31.8899
+custom_fonts/normal_font = ExtResource( 4 )
+text = "Achievement Get!"
+
+[node name="achievementName" type="RichTextLabel" parent="AchievementHandler/AchievementPanel"]
+margin_left = -5.04858
+margin_top = 27.3304
+margin_right = 227.951
+margin_bottom = 62.3304
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Achievement name"
+text = "Achievement name"
+scroll_active = false
+
+[node name="DisappearTimer" type="Timer" parent="AchievementHandler/AchievementPanel"]
+wait_time = 3.0
+one_shot = true
+
 [node name="PointPerSecondTimer" type="Timer" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -15.0
+autoplay = true
+script = ExtResource( 13 )
 [connection signal="mouse_entered" from="pope" to="pope" method="_on_pope_mouse_entered"]
 [connection signal="mouse_exited" from="pope" to="pope" method="_on_pope_mouse_exited"]
+[connection signal="timeout" from="pope/dancingPope/AnimationTimer" to="pope/dancingPope" method="_on_AnimationTimer_timeout"]
+[connection signal="timeout" from="pope/dancingPope/SpecialModeTimer" to="pope/dancingPope" method="_on_SpecialModeTimer_timeout"]
 [connection signal="pressed" from="InfoPanel/ButtonShop" to="InfoPanel" method="_on_ButtonShop_pressed"]
 [connection signal="pressed" from="InfoPanel/ButtonBack" to="InfoPanel" method="_on_ButtonBack_pressed"]
 [connection signal="pressed" from="Upgrades/Creampie" to="Upgrades" method="_on_Creampie_pressed"]
 [connection signal="pressed" from="Upgrades/Sculpture" to="Upgrades" method="_on_Sculpture_pressed"]
+[connection signal="pressed" from="Upgrades/Mary" to="Upgrades" method="_on_Mary_pressed"]
+[connection signal="pressed" from="Upgrades/Spinach" to="Upgrades" method="_on_Spinach_pressed"]
+[connection signal="timeout" from="AchievementHandler/AchievementPanel/DisappearTimer" to="AchievementHandler" method="_on_DisappearTimer_timeout"]
 [connection signal="timeout" from="PointPerSecondTimer" to="pope" method="_on_PointPerSecondTimer_timeout"]
+[connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_MusicPlayer_finished"]

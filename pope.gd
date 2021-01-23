@@ -9,7 +9,9 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("click") and canClick:
-		Main.points += 1
+		Main.points += Main.pointsPerClick
+		
+		
 		if rng.randi_range(0,5) != -1:
 			var particle = particleScene.instance()
 			$"..".add_child(particle)
@@ -28,5 +30,5 @@ func _on_pope_mouse_exited():
 
 
 func _on_PointPerSecondTimer_timeout():
-	Main.points += Main.points_per_second
+	Main.points += Main.pointsPerSecond
 	$"../PointPerSecondTimer".start()

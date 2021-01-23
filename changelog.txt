@@ -5,4 +5,3 @@
 0.2
 + Overhauled the code for Upgrades (dzieki jacek)
 + Added particles that spawn when you click the Pope
-+ Upgraded the pope's collision
